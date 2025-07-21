@@ -5,20 +5,15 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Florida Sliding Door Repair – SlideFixPros</title>
     <meta name="description" content="Expert sliding door repair in Florida. Same-day service, lifetime warranty, salt-air resistant parts. Call +1 (888) 504-4553 for free estimate.">
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iNCIgeT0iOCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjE2IiBmaWxsPSIjRkY2QTAwIiByeD0iMiIvPgo8cmVjdCB4PSIxOCIgeT0iOCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjE2IiBmaWxsPSIjRkY2QTAwIiByeD0iMiIvPgo8cGF0aCBkPSJNMTQgMTZMMTggMTYiIHN0cm9rZT0iI0ZGNkEwMCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+">
     
+    <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
-    <!-- End Google Tag Manager -->
-    
+    <!-- Critical CSS inline for above-the-fold content -->
     <style>
         :root {
             --primary: #FF6A00;
@@ -35,37 +30,29 @@
         }
         
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             color: var(--text);
             line-height: 1.5;
             overflow-x: hidden;
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
-        /* Typography */
-        h1 {
-            font-size: clamp(1.75rem, 5vw, 3rem);
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-        
-        h2 {
-            font-size: clamp(1.5rem, 4vw, 2.25rem);
-            font-weight: 700;
-            line-height: 1.3;
-            margin-bottom: 1rem;
-        }
-        
-        h3 {
-            font-size: clamp(1.25rem, 3vw, 1.5rem);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(255, 106, 0, 0.1) 0%, rgba(248, 248, 248, 0.8) 100%);
+            padding-top: 80px;
         }
         
         .btn {
@@ -85,397 +72,25 @@
             cursor: pointer;
         }
         
-        .btn:hover, .btn:focus {
+        .btn:hover {
             background: var(--primary-hover);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 106, 0, 0.3);
-            outline: 2px solid var(--primary);
-            outline-offset: 2px;
-        }
-        
-        /* Header */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--white);
-            z-index: 1000;
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: var(--text);
-            cursor: pointer;
-        }
-        
-        .logo svg {
-            margin-right: 0.5rem;
-        }
-        
-        .logo-text {
-            font-weight: 700;
-            font-size: 1.25rem;
-        }
-        
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, rgba(255, 106, 0, 0.1) 0%, rgba(248, 248, 248, 0.8) 100%), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720"><rect fill="%23F8F8F8" width="1280" height="720"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="%23FF6A00" font-family="Inter" font-size="48">Sliding Door Repair</text></svg>') center/cover;
-            padding-top: 80px;
-            position: relative;
-        }
-        
-        .hero-content {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .hero-subtitle {
-            font-size: clamp(1rem, 3vw, 1.25rem);
-            margin-bottom: 2rem;
-            font-weight: 500;
-        }
-        
-        .hero-cta {
-            margin-bottom: 2rem;
-        }
-        
-        /* Trust Bar */
-        .trust-bar {
-            background: var(--light-bg);
-            padding: 1.5rem 0;
-            overflow-x: auto;
-        }
-        
-        .trust-items {
-            display: flex;
-            gap: 1rem;
-            min-width: max-content;
-            padding-bottom: 0.5rem;
-        }
-        
-        .trust-item {
-            background: var(--white);
-            padding: 0.75rem 1rem;
-            border-radius: 25px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .trust-item .star {
-            color: #ffd700;
-        }
-        
-        /* Section Styling */
-        .section {
-            padding: 3rem 0;
-        }
-        
-        .section:nth-child(even) {
-            background: var(--light-bg);
-        }
-        
-        /* Pain Solution Strip */
-        .pain-solutions {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-        }
-        
-        .pain-card {
-            background: var(--white);
-            padding: 1.5rem;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        
-        .pain-title {
-            color: var(--primary);
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-        
-        /* Gallery */
-        .gallery {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-        
-        .gallery-item {
-            background: var(--white);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        
-        .gallery-images {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1px;
-        }
-        
-        .gallery-img {
-            width: 100%;
-            height: 200px;
-            background: var(--light-bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.875rem;
-            color: var(--text);
-        }
-        
-        .gallery-caption {
-            padding: 1rem;
-            text-align: center;
-            font-weight: 600;
-        }
-        
-        /* Reviews */
-        .reviews {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-        }
-        
-        .review-card {
-            background: var(--white);
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        
-        .review-text {
-            font-style: italic;
-            margin-bottom: 0.5rem;
-        }
-        
-        .review-author {
-            font-weight: 600;
-            color: var(--primary);
-        }
-        
-        /* Map Section */
-        .map-container {
-            background: var(--white);
-            border-radius: 12px;
-            overflow: hidden;
-            margin-bottom: 1.5rem;
-        }
-        
-        .map {
-            width: 100%;
-            height: 250px;
-            background: var(--light-bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text);
-            font-weight: 500;
-        }
-        
-        .service-cities {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 0.5rem;
-        }
-        
-        .service-city {
-            background: var(--white);
-            padding: 0.75rem;
-            border-radius: 8px;
-            text-align: center;
-            font-weight: 500;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        /* Guarantee Bar */
-        .guarantees {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-        }
-        
-        .guarantee-item {
-            background: var(--white);
-            padding: 1.5rem;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        
-        .guarantee-icon {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        /* FAQ */
-        .faq-item {
-            background: var(--white);
-            margin-bottom: 1rem;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        
-        .faq-question {
-            padding: 1.5rem;
-            background: var(--white);
-            border: none;
-            width: 100%;
-            text-align: left;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            min-height: 48px;
-        }
-        
-        .faq-question:hover, .faq-question:focus {
-            background: var(--light-bg);
-            outline: 2px solid var(--primary);
-        }
-        
-        .faq-answer {
-            padding: 0 1.5rem 1.5rem;
-            display: none;
-        }
-        
-        .faq-item.active .faq-answer {
-            display: block;
-        }
-        
-        .faq-item.active .faq-question::after {
-            transform: rotate(45deg);
-        }
-        
-        .faq-question::after {
-            content: '+';
-            font-size: 1.5rem;
-            transition: transform 0.2s ease;
-        }
-        
-        /* Footer */
-        .footer {
-            background: var(--text);
-            color: var(--white);
-            padding: 2rem 0;
-            text-align: center;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .footer a {
-            color: var(--white);
-            text-decoration: none;
-        }
-        
-        .footer a:hover {
-            color: var(--primary);
-        }
-        
-        /* Sticky Call Bar */
-        .sticky-call-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: var(--primary);
-            padding: 1rem;
-            z-index: 999;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
-        }
-        
-        .sticky-call-bar .btn {
-            width: 100%;
-            background: var(--white);
-            color: var(--primary);
-            font-weight: 700;
-        }
-        
-        .sticky-call-bar .btn:hover {
-            background: var(--light-bg);
-            color: var(--primary-hover);
-        }
-        
-        /* Desktop Responsive */
-        @media (min-width: 769px) {
-            .container {
-                padding: 0 2rem;
-            }
-            
-            .pain-solutions {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .reviews {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .guarantees {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .gallery {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .footer-content {
-                grid-template-columns: repeat(3, 1fr);
-                text-align: left;
-            }
-            
-            .sticky-call-bar {
-                display: none;
-            }
-            
-            .hero-content {
-                text-align: left;
-                max-width: 50%;
-                margin: 0;
-            }
-        }
-        
-        /* Performance optimizations */
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-        
-        .btn, .faq-question, .logo {
-            -webkit-tap-highlight-color: transparent;
-        }
-        
-        /* Focus states for accessibility */
-        .btn:focus,
-        .faq-question:focus,
-        .logo:focus {
-            outline: 2px solid var(--primary);
-            outline-offset: 2px;
         }
     </style>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+    <!-- End Google Tag Manager -->
     
     <!-- JSON-LD Schema -->
     <script type="application/ld+json">
@@ -551,7 +166,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="hero">
         <div class="container">
             <div class="hero-content">
                 <h1>Florida Sliding Door Repair—Fixed Today, 24/7</h1>
@@ -559,6 +174,16 @@
                 <a href="tel:+18885044553" class="btn hero-cta" aria-label="Call SlideFixPros now at 888-504-4553" onclick="trackCall()">
                     Call Now: +1 (888) 504-4553
                 </a>
+                <div class="hero-image">
+                    <picture>
+                        <source media="(min-width: 768px)" srcset="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1280&h=720&fit=crop&crop=center&auto=format&q=75" type="image/webp">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center&auto=format&q=75" 
+                             alt="Professional technician repairing sliding door in Florida home" 
+                             loading="eager" 
+                             width="800" 
+                             height="600">
+                    </picture>
+                </div>
             </div>
         </div>
     </section>
@@ -568,181 +193,346 @@
         <div class="container">
             <div class="trust-items">
                 <div class="trust-item">
-                    <span class="star">★</span> 4.9 Google (3,417 reviews)
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="#ffd700">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <span>4.9 Google (3,417 reviews)</span>
+                    <a href="https://g.page/r/YOUR_GMB_LINK" target="_blank" rel="noopener" aria-label="View Google reviews">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#4285f4">
+                            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                        </svg>
+                    </a>
                 </div>
                 <div class="trust-item">
-                    <span class="star">★</span> 5.0 Yelp rating
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="#ffd700">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <span>5.0 Yelp rating</span>
+                    <a href="https://yelp.com/biz/YOUR_YELP_LINK" target="_blank" rel="noopener" aria-label="View Yelp reviews">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#d32323">
+                            <path d="M12.17,2.04C6.53,1.71,2,6.3,2,12c0,5.52,4.48,10,10,10s10-4.48,10-10C22,6.3,17.47,1.71,12.17,2.04z"/>
+                        </svg>
+                    </a>
                 </div>
                 <div class="trust-item">
-                    Licensed & Insured FL GLZ-#XXXX
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF6A00">
+                        <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V14H16V16H8V14H9.2V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.4,8.7 10.4,10V14H13.6V10C13.6,8.7 12.8,8.2 12,8.2Z"/>
+                    </svg>
+                    <span>Licensed & Insured FL GLZ-#XXXX</span>
                 </div>
                 <div class="trust-item">
-                    Family-Owned Since 2009
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF6A00">
+                        <path d="M12,5.5A3.5,3.5 0 0,1 15.5,9A3.5,3.5 0 0,1 12,12.5A3.5,3.5 0 0,1 8.5,9A3.5,3.5 0 0,1 12,5.5M5,8C5.56,8 6.08,8.15 6.53,8.42C6.38,9.85 6.8,11.27 7.66,12.38C7.16,13.34 6.16,14 5,14A3,3 0 0,1 2,11A3,3 0 0,1 5,8M19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14C17.84,14 16.84,13.34 16.34,12.38C17.2,11.27 17.62,9.85 17.47,8.42C17.92,8.15 18.44,8 19,8M5.5,18.25C5.5,16.18 8.41,14.5 12,14.5C15.59,14.5 18.5,16.18 18.5,18.25V20H5.5V18.25M0,20V18.5C0,17.11 1.89,15.94 4.45,15.6C3.86,16.28 3.5,17.22 3.5,18.25V20H0M24,20H20.5V18.25C20.5,17.22 20.14,16.28 19.55,15.6C22.11,15.94 24,17.11 24,18.5V20Z"/>
+                    </svg>
+                    <span>Family-Owned Since 2009</span>
                 </div>
                 <div class="trust-item">
-                    $5M Liability Coverage
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF6A00">
+                        <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9L10,17Z"/>
+                    </svg>
+                    <span>$5M Liability Coverage</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Pain Solution Strip -->
-    <section class="section">
+    <section class="section pain-section" id="problems">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 2rem;">Common Problems We Fix</h2>
+            <h2>Common Problems We Fix</h2>
             <div class="pain-solutions">
                 <div class="pain-card">
+                    <div class="pain-icon">🚪</div>
                     <div class="pain-title">Door off track?</div>
                     <p>30-minute fix—anywhere in FL</p>
+                    <a href="tel:+18885044553" class="btn-secondary" onclick="trackCall()">Get Fixed Now</a>
                 </div>
                 <div class="pain-card">
+                    <div class="pain-icon">⚡</div>
                     <div class="pain-title">Hard to slide?</div>
                     <p>30-minute fix—anywhere in FL</p>
+                    <a href="tel:+18885044553" class="btn-secondary" onclick="trackCall()">Get Fixed Now</a>
                 </div>
                 <div class="pain-card">
+                    <div class="pain-icon">🔒</div>
                     <div class="pain-title">Won't lock?</div>
                     <p>30-minute fix—anywhere in FL</p>
+                    <a href="tel:+18885044553" class="btn-secondary" onclick="trackCall()">Get Fixed Now</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Before/After Gallery -->
-    <section class="section">
+    <section class="section gallery-section" id="gallery">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 2rem;">Before & After Results</h2>
+            <h2>Before & After Results</h2>
             <div class="gallery">
                 <div class="gallery-item">
                     <div class="gallery-images">
-                        <div class="gallery-img">Before - Orlando</div>
-                        <div class="gallery-img">After - Orlando</div>
+                        <div class="gallery-img before">
+                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop&auto=format&q=75" 
+                                 alt="Orlando sliding door before repair" 
+                                 loading="lazy" 
+                                 width="400" 
+                                 height="300">
+                            <span class="image-label">Before</span>
+                        </div>
+                        <div class="gallery-img after">
+                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&auto=format&q=75" 
+                                 alt="Orlando sliding door after repair" 
+                                 loading="lazy" 
+                                 width="400" 
+                                 height="300">
+                            <span class="image-label">After</span>
+                        </div>
                     </div>
-                    <div class="gallery-caption">Orlando sliding door repair completed</div>
+                    <div class="gallery-caption">
+                        <h3>Orlando Sliding Door Repair</h3>
+                        <p>Complete track realignment and roller replacement</p>
+                    </div>
                 </div>
                 <div class="gallery-item">
                     <div class="gallery-images">
-                        <div class="gallery-img">Before - Miami</div>
-                        <div class="gallery-img">After - Miami</div>
+                        <div class="gallery-img before">
+                            <img src="https://images.unsplash.com/photo-1560448204-e1a3142c7c77?w=400&h=300&fit=crop&auto=format&q=75" 
+                                 alt="Miami patio door before repair" 
+                                 loading="lazy" 
+                                 width="400" 
+                                 height="300">
+                            <span class="image-label">Before</span>
+                        </div>
+                        <div class="gallery-img after">
+                            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=300&fit=crop&auto=format&q=75" 
+                                 alt="Miami patio door after repair" 
+                                 loading="lazy" 
+                                 width="400" 
+                                 height="300">
+                            <span class="image-label">After</span>
+                        </div>
                     </div>
-                    <div class="gallery-caption">Miami patio door restoration</div>
+                    <div class="gallery-caption">
+                        <h3>Miami Patio Door Restoration</h3>
+                        <p>Hurricane-rated parts installation with salt-air protection</p>
+                    </div>
                 </div>
                 <div class="gallery-item">
                     <div class="gallery-images">
-                        <div class="gallery-img">Before - Tampa</div>
-                        <div class="gallery-img">After - Tampa</div>
+                        <div class="gallery-img before">
+                            <img src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=400&h=300&fit=crop&auto=format&q=75" 
+                                 alt="Tampa sliding glass door before repair" 
+                                 loading="lazy" 
+                                 width="400" 
+                                 height="300">
+                            <span class="image-label">Before</span>
+                        </div>
+                        <div class="gallery-img after">
+                            <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=400&h=300&fit=crop&auto=format&q=75" 
+                                 alt="Tampa sliding glass door after repair" 
+                                 loading="lazy" 
+                                 width="400" 
+                                 height="300">
+                            <span class="image-label">After</span>
+                        </div>
                     </div>
-                    <div class="gallery-caption">Tampa sliding glass door fix</div>
+                    <div class="gallery-caption">
+                        <h3>Tampa Sliding Glass Door Fix</h3>
+                        <p>Lock mechanism repair and weather seal replacement</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Customer Reviews -->
-    <section class="section">
+    <section class="section reviews-section" id="reviews">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 2rem;">What Our Customers Say</h2>
+            <h2>What Our Customers Say</h2>
             <div class="reviews">
                 <div class="review-card">
-                    <div class="review-text">"Fixed our sliding door in 20 minutes. Professional and fast service!"</div>
-                    <div class="review-author">- Maria S., Tampa</div>
+                    <div class="review-stars">
+                        <span>★★★★★</span>
+                    </div>
+                    <div class="review-text">"Fixed our sliding door in 20 minutes. Professional and fast service! The technician explained everything and the lifetime warranty gives us peace of mind."</div>
+                    <div class="review-author">
+                        <strong>Maria S.</strong>
+                        <span>Tampa, FL</span>
+                    </div>
                 </div>
                 <div class="review-card">
-                    <div class="review-text">"Lifetime warranty gave us peace of mind. Highly recommend SlideFixPros."</div>
-                    <div class="review-author">- John D., Miami</div>
+                    <div class="review-stars">
+                        <span>★★★★★</span>
+                    </div>
+                    <div class="review-text">"Lifetime warranty gave us peace of mind. Highly recommend SlideFixPros. Same-day service and fair pricing. Will use them again for our other properties."</div>
+                    <div class="review-author">
+                        <strong>John D.</strong>
+                        <span>Miami, FL</span>
+                    </div>
                 </div>
                 <div class="review-card">
-                    <div class="review-text">"Same-day service saved our weekend plans. Thank you!"</div>
-                    <div class="review-author">- Sarah L., Jacksonville</div>
+                    <div class="review-stars">
+                        <span>★★★★★</span>
+                    </div>
+                    <div class="review-text">"Same-day service saved our weekend plans. Thank you! The door slides like new and the price was exactly what they quoted over the phone."</div>
+                    <div class="review-author">
+                        <strong>Sarah L.</strong>
+                        <span>Jacksonville, FL</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Statewide Service Map -->
-    <section class="section">
+    <section class="section map-section" id="service-area">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 2rem;">Serving All of Florida</h2>
+            <h2>Serving All of Florida</h2>
             <div class="map-container">
-                <div class="map">
+                <div class="map" id="florida-map">
                     <!-- Dynamic Number Insertion placeholder -->
                     <!-- Replace with actual Google Maps embed -->
-                    Florida Service Area Map
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651325.0891308715!2d-87.33710368928043!3d27.766279084550704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c1766591562abf%3A0xf72e13d35bc74ed0!2sFlorida!5e0!3m2!1sen!2sus!4v1704067200000!5m2!1sen!2sus" 
+                            width="100%" 
+                            height="250" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="SlideFixPros service area map of Florida">
+                    </iframe>
                 </div>
             </div>
             <div class="service-cities">
-                <div class="service-city">Miami</div>
-                <div class="service-city">Orlando</div>
-                <div class="service-city">Tampa</div>
-                <div class="service-city">Jacksonville</div>
-                <div class="service-city">Fort Lauderdale</div>
-                <div class="service-city">St. Petersburg</div>
-                <div class="service-city">Hialeah</div>
-                <div class="service-city">Tallahassee</div>
+                <div class="service-city">
+                    <h4>Miami</h4>
+                    <p>Dade County</p>
+                </div>
+                <div class="service-city">
+                    <h4>Orlando</h4>
+                    <p>Orange County</p>
+                </div>
+                <div class="service-city">
+                    <h4>Tampa</h4>
+                    <p>Hillsborough County</p>
+                </div>
+                <div class="service-city">
+                    <h4>Jacksonville</h4>
+                    <p>Duval County</p>
+                </div>
+                <div class="service-city">
+                    <h4>Fort Lauderdale</h4>
+                    <p>Broward County</p>
+                </div>
+                <div class="service-city">
+                    <h4>St. Petersburg</h4>
+                    <p>Pinellas County</p>
+                </div>
+                <div class="service-city">
+                    <h4>Hialeah</h4>
+                    <p>Miami-Dade County</p>
+                </div>
+                <div class="service-city">
+                    <h4>Tallahassee</h4>
+                    <p>Leon County</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Guarantee Bar -->
-    <section class="section">
+    <section class="section guarantee-section" id="guarantees">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 2rem;">Our Guarantees</h2>
+            <h2>Our Guarantees</h2>
             <div class="guarantees">
                 <div class="guarantee-item">
-                    <div class="guarantee-icon">✓</div>
+                    <div class="guarantee-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="#FF6A00">
+                            <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M11,16.5L18,9.5L16.59,8.09L11,13.67L7.41,10.09L6,11.5L11,16.5Z"/>
+                        </svg>
+                    </div>
                     <h3>No-Fix-No-Pay</h3>
-                    <p>We only charge if we successfully fix your sliding door</p>
+                    <p>We only charge if we successfully fix your sliding door. 100% satisfaction guaranteed or your money back.</p>
                 </div>
                 <div class="guarantee-item">
-                    <div class="guarantee-icon">💰</div>
+                    <div class="guarantee-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="#FF6A00">
+                            <path d="M7,15H9C9,16.08 10.37,17 12,17C13.63,17 15,16.08 15,15C15,13.9 13.96,13.5 11.76,12.97C9.64,12.44 7,11.78 7,9C7,7.21 8.47,5.69 10.5,5.18V3H13.5V5.18C15.53,5.69 17,7.21 17,9H15C15,7.92 13.63,7 12,7C10.37,7 9,7.92 9,9C9,10.1 10.04,10.5 12.24,11.03C14.36,11.56 17,12.22 17,15C17,16.79 15.53,18.31 13.5,18.82V21H10.5V18.82C8.47,18.31 7,16.79 7,15Z"/>
+                        </svg>
+                    </div>
                     <h3>Price-Match Guarantee</h3>
-                    <p>We'll match any competitor's written estimate</p>
+                    <p>We'll match any competitor's written estimate. Get the best price and the best service in Florida.</p>
                 </div>
                 <div class="guarantee-item">
-                    <div class="guarantee-icon">🛡️</div>
+                    <div class="guarantee-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="#FF6A00">
+                            <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V14H16V16H8V14H9.2V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.4,8.7 10.4,10V14H13.6V10C13.6,8.7 12.8,8.2 12,8.2Z"/>
+                        </svg>
+                    </div>
                     <h3>Lifetime Parts & Labor</h3>
-                    <p>Transferable warranty on all repairs and parts</p>
+                    <p>Transferable warranty on all repairs and parts. Protects your investment and adds value to your home.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- FAQ Section -->
-    <section class="section">
+    <section class="section faq-section" id="faq">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 2rem;">Frequently Asked Questions</h2>
+            <h2>Frequently Asked Questions</h2>
             <div class="faq">
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false" aria-label="How quickly can you arrive?">
-                        How quickly can you arrive?
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-1">
+                        <span>How quickly can you arrive?</span>
+                        <span class="faq-icon">+</span>
                     </button>
-                    <div class="faq-answer">
-                        <p>We dispatch technicians within 2 hours of your call for same-day sliding door repair service across Florida.</p>
+                    <div class="faq-answer" id="faq-1">
+                        <p>We dispatch technicians within 2 hours of your call for same-day sliding door repair service across Florida. Our mobile repair units are strategically located throughout the state to ensure rapid response times.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false" aria-label="How much does a service visit cost?">
-                        How much does a service visit cost?
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-2">
+                        <span>How much does a service visit cost?</span>
+                        <span class="faq-icon">+</span>
                     </button>
-                    <div class="faq-answer">
-                        <p>We provide a free 30-second phone quote. No hidden fees or surprise charges - you'll know the cost upfront.</p>
+                    <div class="faq-answer" id="faq-2">
+                        <p>We provide a free 30-second phone quote based on your door's symptoms. No hidden fees or surprise charges - you'll know the exact cost upfront before we start any work.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false" aria-label="Do you use hurricane-rated parts?">
-                        Do you use hurricane-rated parts?
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-3">
+                        <span>Do you use hurricane-rated parts?</span>
+                        <span class="faq-icon">+</span>
                     </button>
-                    <div class="faq-answer">
-                        <p>Yes, all our replacement parts are hurricane-rated and designed to withstand Florida's harsh weather conditions.</p>
+                    <div class="faq-answer" id="faq-3">
+                        <p>Yes, all our replacement parts are hurricane-rated and designed to withstand Florida's harsh weather conditions, including salt air corrosion and high winds. We use only premium stainless steel components.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false" aria-label="Is the warranty transferable?">
-                        Is the warranty transferable?
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-4">
+                        <span>Is the warranty transferable?</span>
+                        <span class="faq-icon">+</span>
                     </button>
-                    <div class="faq-answer">
-                        <p>Our lifetime warranty on parts and labor is fully transferable to new homeowners, adding value to your property.</p>
+                    <div class="faq-answer" id="faq-4">
+                        <p>Our lifetime warranty on parts and labor is fully transferable to new homeowners, adding significant value to your property. The warranty documentation transfers with property deeds.</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Fix Your Sliding Door?</h2>
+                <p>Call now for your free estimate and same-day service</p>
+                <a href="tel:+18885044553" class="btn btn-large" onclick="trackCall()">
+                    📞 Call Now: +1 (888) 504-4553
+                </a>
+                <p class="cta-note">Available 24/7 • Free Phone Quote • Licensed & Insured</p>
             </div>
         </div>
     </section>
@@ -751,18 +541,46 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div>
+                <div class="footer-section">
                     <h3>24/7 Emergency Service</h3>
-                    <a href="tel:+18885044553" onclick="trackCall()">+1 (888) 504-4553</a>
+                    <a href="tel:+18885044553" class="footer-phone" onclick="trackCall()">+1 (888) 504-4553</a>
+                    <p>Serving all of Florida with same-day sliding door repair</p>
                 </div>
-                <div>
+                <div class="footer-section">
                     <h3>Licensed & Insured</h3>
                     <p>License #GLZ-XXXX</p>
-                    <p>Serving all of Florida</p>
+                    <p>$5M Liability Coverage</p>
+                    <p>Family-Owned Since 2009</p>
                 </div>
-                <div>
+                <div class="footer-section">
+                    <h3>Service Areas</h3>
+                    <p>Miami • Orlando • Tampa • Jacksonville</p>
+                    <p>Fort Lauderdale • St. Petersburg</p>
+                    <p>Hialeah • Tallahassee</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-legal">
                     <a href="/privacy" aria-label="Privacy Policy">Privacy Policy</a>
-                    <p>© 2025 SlideFixPros. All rights reserved.</p>
+                    <span>|</span>
+                    <a href="/terms" aria-label="Terms of Service">Terms of Service</a>
+                    <span>|</span>
+                    <span>© 2025 SlideFixPros. All rights reserved.</span>
+                </div>
+                <div class="footer-social">
+                    <a href="https://facebook.com/slidefixpros" target="_blank" rel="noopener" aria-label="Follow us on Facebook">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+                    <a href="https://google.com/maps/place/YOUR_GMB_LINK" target="_blank" rel="noopener" aria-label="Find us on Google Maps">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>
@@ -770,65 +588,12 @@
 
     <!-- Sticky Call Bar (Mobile Only) -->
     <div class="sticky-call-bar">
-        <a href="tel:+18885044553" class="btn" aria-label="Call SlideFixPros now" onclick="trackCall()">
+        <a href="tel:+18885044553" class="btn sticky-btn" aria-label="Call SlideFixPros now" onclick="trackCall()">
             📞 Call Now: (888) 504-4553
         </a>
     </div>
 
-    <script>
-        // FAQ functionality
-        document.querySelectorAll('.faq-question').forEach(button => {
-            button.addEventListener('click', () => {
-                const faqItem = button.parentElement;
-                const isActive = faqItem.classList.contains('active');
-                
-                // Close all FAQ items
-                document.querySelectorAll('.faq-item').forEach(item => {
-                    item.classList.remove('active');
-                    item.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-                });
-                
-                // Open clicked item if it wasn't active
-                if (!isActive) {
-                    faqItem.classList.add('active');
-                    button.setAttribute('aria-expanded', 'true');
-                }
-            });
-        });
-
-        // Scroll to top function
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Track phone calls for analytics
-        function trackCall() {
-            if (typeof dataLayer !== 'undefined') {
-                dataLayer.push({
-                    'event': 'click_to_call',
-                    'event_category': 'engagement',
-                    'event_label': 'phone_call'
-                });
-            }
-        }
-
-        // Lazy loading simulation for images
-        if ('IntersectionObserver' in window) {
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.dataset.src;
-                        img.classList.remove('lazy');
-                        imageObserver.unobserve(img);
-                    }
-                });
-            });
-
-            document.querySelectorAll('img[data-src]').forEach(img => {
-                imageObserver.observe(img);
-            });
-        }
-    </script>
+    <!-- Scripts -->
+    <script src="script.js" defer></script>
 </body>
 </html>
