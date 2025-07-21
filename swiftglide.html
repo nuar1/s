@@ -227,38 +227,108 @@
         }
 
         .gallery-container {
-            overflow: hidden;
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
             border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         .gallery-track {
             display: flex;
-            gap: 20px;
-            cursor: grab;
-            user-select: none;
-        }
-
-        .gallery-track:active {
-            cursor: grabbing;
+            transition: transform 0.5s ease;
+            width: 100%;
         }
 
         .gallery-item {
-            flex: 0 0 300px;
-            height: 250px;
-            border-radius: 8px;
-            overflow: hidden;
+            flex: 0 0 100%;
+            height: 400px;
+            position: relative;
         }
 
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s ease;
             cursor: pointer;
+            transition: transform 0.3s ease;
         }
 
         .gallery-item img:hover {
-            transform: scale(1.05);
+            transform: scale(1.02);
+        }
+
+        /* Gallery Navigation */
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #222;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .gallery-nav:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .gallery-nav.prev {
+            left: 20px;
+        }
+
+        .gallery-nav.next {
+            right: 20px;
+        }
+
+        /* Gallery Dots */
+        .gallery-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .gallery-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-dot.active {
+            background: #2D9CDB;
+            transform: scale(1.2);
+        }
+
+        .gallery-dot:hover {
+            background: #2D9CDB;
+        }
+
+        /* Gallery Image Counter */
+        .gallery-counter {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
         }
 
         /* Lightbox */
@@ -672,7 +742,28 @@
             }
             
             .gallery-item {
-                flex: 0 0 250px;
+                height: 300px;
+            }
+
+            .gallery-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .gallery-nav.prev {
+                left: 10px;
+            }
+
+            .gallery-nav.next {
+                right: 10px;
+            }
+
+            .gallery-counter {
+                top: 10px;
+                right: 10px;
+                font-size: 0.8rem;
+                padding: 3px 8px;
             }
             
             .footer-content {
@@ -825,7 +916,36 @@
                     <div class="gallery-item">
                         <img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Professional sliding door service" onclick="openLightbox(this.src)">
                     </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sliding patio door maintenance" onclick="openLightbox(this.src)">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Premium sliding door installation" onclick="openLightbox(this.src)">
+                    </div>
                 </div>
+                
+                <!-- Gallery Navigation Arrows -->
+                <button class="gallery-nav prev" id="gallery-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="gallery-nav next" id="gallery-next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <!-- Gallery Counter -->
+                <div class="gallery-counter" id="gallery-counter">
+                    <span id="current-image">1</span> / <span id="total-images">6</span>
+                </div>
+            </div>
+            
+            <!-- Gallery Dots -->
+            <div class="gallery-dots" id="gallery-dots">
+                <span class="gallery-dot active" data-slide="0"></span>
+                <span class="gallery-dot" data-slide="1"></span>
+                <span class="gallery-dot" data-slide="2"></span>
+                <span class="gallery-dot" data-slide="3"></span>
+                <span class="gallery-dot" data-slide="4"></span>
+                <span class="gallery-dot" data-slide="5"></span>
             </div>
         </div>
     </section>
@@ -1144,55 +1264,106 @@
             });
         });
 
-        // Gallery Drag Functionality
-        let isDown = false;
-        let startX;
-        let scrollLeft;
+        // Gallery Carousel Functionality
+        let currentGallerySlide = 0;
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const galleryDots = document.querySelectorAll('.gallery-dot');
+        const galleryPrev = document.getElementById('gallery-prev');
+        const galleryNext = document.getElementById('gallery-next');
+        const currentImageSpan = document.getElementById('current-image');
+        const totalImagesSpan = document.getElementById('total-images');
+
+        function showGallerySlide(index) {
+            // Ensure index is within bounds
+            if (index >= galleryItems.length) {
+                currentGallerySlide = 0;
+            } else if (index < 0) {
+                currentGallerySlide = galleryItems.length - 1;
+            } else {
+                currentGallerySlide = index;
+            }
+
+            // Move the gallery track
+            const translateX = -currentGallerySlide * 100;
+            galleryTrack.style.transform = `translateX(${translateX}%)`;
+
+            // Update dots
+            galleryDots.forEach(dot => dot.classList.remove('active'));
+            if (galleryDots[currentGallerySlide]) {
+                galleryDots[currentGallerySlide].classList.add('active');
+            }
+
+            // Update counter
+            if (currentImageSpan) {
+                currentImageSpan.textContent = currentGallerySlide + 1;
+            }
+        }
+
+        function nextGallerySlide() {
+            showGallerySlide(currentGallerySlide + 1);
+        }
+
+        function prevGallerySlide() {
+            showGallerySlide(currentGallerySlide - 1);
+        }
+
+        // Navigation button event listeners
+        if (galleryNext) {
+            galleryNext.addEventListener('click', nextGallerySlide);
+        }
+
+        if (galleryPrev) {
+            galleryPrev.addEventListener('click', prevGallerySlide);
+        }
+
+        // Dot click handlers
+        galleryDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showGallerySlide(index);
+            });
+        });
+
+        // Auto-advance gallery every 7 seconds
+        setInterval(nextGallerySlide, 7000);
+
+        // Touch/swipe support for mobile
+        let startTouch = 0;
+        let endTouch = 0;
 
         if (galleryTrack) {
-            galleryTrack.addEventListener('mousedown', (e) => {
-                isDown = true;
-                galleryTrack.classList.add('active');
-                startX = e.pageX - galleryTrack.offsetLeft;
-                scrollLeft = galleryTrack.scrollLeft;
-            });
-
-            galleryTrack.addEventListener('mouseleave', () => {
-                isDown = false;
-                galleryTrack.classList.remove('active');
-            });
-
-            galleryTrack.addEventListener('mouseup', () => {
-                isDown = false;
-                galleryTrack.classList.remove('active');
-            });
-
-            galleryTrack.addEventListener('mousemove', (e) => {
-                if (!isDown) return;
-                e.preventDefault();
-                const x = e.pageX - galleryTrack.offsetLeft;
-                const walk = (x - startX) * 2;
-                galleryTrack.scrollLeft = scrollLeft - walk;
-            });
-
-            // Touch events for mobile
             galleryTrack.addEventListener('touchstart', (e) => {
-                isDown = true;
-                startX = e.touches[0].pageX - galleryTrack.offsetLeft;
-                scrollLeft = galleryTrack.scrollLeft;
+                startTouch = e.touches[0].clientX;
             });
 
-            galleryTrack.addEventListener('touchmove', (e) => {
-                if (!isDown) return;
-                const x = e.touches[0].pageX - galleryTrack.offsetLeft;
-                const walk = (x - startX) * 2;
-                galleryTrack.scrollLeft = scrollLeft - walk;
+            galleryTrack.addEventListener('touchend', (e) => {
+                endTouch = e.changedTouches[0].clientX;
+                handleSwipe();
             });
 
-            galleryTrack.addEventListener('touchend', () => {
-                isDown = false;
-            });
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = startTouch - endTouch;
+
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        // Swiped left - next slide
+                        nextGallerySlide();
+                    } else {
+                        // Swiped right - previous slide
+                        prevGallerySlide();
+                    }
+                }
+            }
         }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                prevGallerySlide();
+            } else if (e.key === 'ArrowRight') {
+                nextGallerySlide();
+            }
+        });
 
         // Lightbox functionality
         function openLightbox(src) {
@@ -1280,6 +1451,14 @@
             
             // Initialize first testimonial
             showTestimonial(0);
+            
+            // Initialize gallery
+            if (galleryItems.length > 0) {
+                showGallerySlide(0);
+                if (totalImagesSpan) {
+                    totalImagesSpan.textContent = galleryItems.length;
+                }
+            }
         });
     </script>
 </body>
