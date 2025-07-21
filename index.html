@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SwiftGlide - Miami's Premier Sliding Door Repair Experts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Sticky Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>SwiftGlide</h2>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#services" class="nav-link">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#reviews" class="nav-link">Reviews</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="fade-in">Your Sliding Door, Repaired Today</h1>
+            <p class="fade-in">Miami's trusted sliding door experts. Same-day service, transparent pricing, lifetime warranty.</p>
+            <a href="tel:+18885044553" class="cta-button fade-in">
+                <i class="fas fa-phone"></i>
+                Call 24/7 for Free Estimate
+            </a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Our Expert Services</h2>
+                <p>Professional sliding door solutions for homes and businesses across Miami</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">🔧</div>
+                    <h3>Roller & Track Repair</h3>
+                    <p>Smooth operation restored with precision roller and track adjustments for any sliding door.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🔒</div>
+                    <h3>Lock Mechanism</h3>
+                    <p>Secure your space with expert lock repairs and replacements for complete peace of mind.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🚪</div>
+                    <h3>New Installations</h3>
+                    <p>Premium sliding door installations with professional craftsmanship and lifetime support included.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Work Gallery -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Our Work</h2>
+                <p>See the quality and craftsmanship in every repair we complete.</p>
+            </div>
+            <div class="gallery-container fade-in">
+                <div class="gallery-track" id="gallery-track">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Modern sliding door repair" onclick="openLightbox(this.src)">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Glass sliding door installation" onclick="openLightbox(this.src)">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sliding door track repair" onclick="openLightbox(this.src)">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Professional sliding door service" onclick="openLightbox(this.src)">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="">
+        <span class="close-lightbox">&times;</span>
+    </div>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose" id="about">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Why Choose SwiftGlide?</h2>
+                <p>Experience the difference of working with Miami's most trusted sliding door specialists</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Same-Day Service</h3>
+                    <p>Emergency repairs completed within hours, not days - we value your time.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Transparent Pricing</h3>
+                    <p>No hidden fees or surprise charges - clear upfront pricing you can trust.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Lifetime Warranty</h3>
+                    <p>All repairs backed by comprehensive warranty for complete customer confidence.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Family-Owned</h3>
+                    <p>Local Miami business with 15+ years serving our community with integrity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="reviews">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>What Our Customers Say</h2>
+                <p>Real reviews from satisfied Miami homeowners</p>
+            </div>
+            <div class="testimonial-container fade-in">
+                <div class="testimonial-card active" data-testimonial="0">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"SwiftGlide transformed our broken sliding door into something that works perfectly. Same-day service and professional results!"</p>
+                    <h4>- Maria Rodriguez</h4>
+                </div>
+                <div class="testimonial-card" data-testimonial="1">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Exceptional service! They fixed our sliding door quickly and the pricing was exactly what they quoted. Highly recommend!"</p>
+                    <h4>- James Chen</h4>
+                </div>
+                <div class="testimonial-card" data-testimonial="2">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Professional, reliable, and honest. SwiftGlide is the only company I'll call for sliding door issues. Great lifetime warranty too!"</p>
+                    <h4>- Sarah Thompson</h4>
+                </div>
+                <div class="testimonial-dots">
+                    <span class="dot active" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
+                </div>
+            </div>
+            <div class="social-proof fade-in">
+                <h3>Find us on</h3>
+                <div class="social-logos">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Yelp_Logo.svg" alt="Yelp" class="social-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google My Business" class="social-logo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Simple Process -->
+    <section class="process">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Our Simple Process</h2>
+                <p>Getting your sliding door fixed has never been easier</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step fade-in">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Book</h3>
+                        <p>Schedule your free estimate online or call our 24/7 hotline</p>
+                    </div>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Repair</h3>
+                        <p>Our certified technicians arrive with all necessary tools and parts</p>
+                    </div>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Enjoy</h3>
+                        <p>Experience smooth sliding doors with our lifetime warranty protection</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Get Your Free Estimate</h2>
+                <p>Quick response guaranteed within 30 minutes</p>
+            </div>
+            <form class="contact-form fade-in" id="contact-form">
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="service">Service Needed</label>
+                    <select id="service" name="service">
+                        <option value="">Select a service</option>
+                        <option value="roller-track">Roller & Track Repair</option>
+                        <option value="lock-mechanism">Lock Mechanism</option>
+                        <option value="new-installation">New Installation</option>
+                        <option value="emergency-repair">Emergency Repair</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message (Optional)</label>
+                    <textarea id="message" name="message" rows="4"></textarea>
+                </div>
+                <button type="submit" class="submit-button">
+                    Get Free Estimate
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SwiftGlide</h3>
+                    <p>Miami's premier sliding door repair specialists. Professional service, lifetime warranties, and transparent pricing since 2008.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li>Roller & Track Repair</li>
+                        <li>Lock Mechanism</li>
+                        <li>New Installations</li>
+                        <li>Emergency Repairs</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> (888) 504-4553</li>
+                        <li><i class="fas fa-envelope"></i> info@swiftglide.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Miami, FL</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Hours</h4>
+                    <ul>
+                        <li>Monday - Friday: 7AM - 8PM</li>
+                        <li>Saturday: 8AM - 6PM</li>
+                        <li>Sunday: 9AM - 5PM</li>
+                        <li>Emergency: 24/7</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SwiftGlide. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Sticky Call Button -->
+    <div class="mobile-call-button">
+        <a href="tel:+18885044553">
+            <i class="fas fa-phone"></i>
+            Call Now
+        </a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
