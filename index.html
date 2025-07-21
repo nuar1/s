@@ -6,12 +6,15 @@
     <title>Florida Sliding Door Repair – SlideFixPros</title>
     <meta name="description" content="Expert sliding door repair in Florida. Same-day service, lifetime warranty, salt-air resistant parts. Call +1 (888) 504-4553 for free estimate.">
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iNCIgeT0iOCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjE2IiBmaWxsPSIjRkY2QTAwIiByeD0iMiIvPgo8cmVjdCB4PSIxOCIgeT0iOCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjE2IiBmaWxsPSIjRkY2QTAwIiByeD0iMiIvPgo8cGF0aCBkPSJNMTQgMTZMMTggMTYiIHN0cm9rZT0iI0ZGNkEwMCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+">
+    <!-- Proper SVG Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Crect x='4' y='6' width='10' height='20' fill='%23FF6A00' rx='2'/%3E%3Crect x='18' y='6' width='10' height='20' fill='%23FF6A00' rx='2'/%3E%3Cpath d='M14 16h4' stroke='%23FF6A00' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
     
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Single Google Fonts declaration -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     
     <!-- Critical CSS inline for above-the-fold content -->
     <style>
@@ -20,7 +23,10 @@
             --primary-hover: #e55a00;
             --text: #1F1F1F;
             --light-bg: #F8F8F8;
+            --dark-bg: #1F1F1F;
             --white: #ffffff;
+            --gray: #666666;
+            --shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
         
         * {
@@ -30,11 +36,18 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', sans-serif;
             color: var(--text);
-            line-height: 1.5;
+            line-height: 1.6;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
+        
+        /* Utility classes for contrast */
+        .bg-light { background-color: var(--light-bg); color: var(--text); }
+        .bg-dark { background-color: var(--dark-bg); color: var(--white); }
+        .bg-white { background-color: var(--white); color: var(--text); }
+        .bg-primary { background-color: var(--primary); color: var(--white); }
         
         .header {
             position: fixed;
@@ -44,15 +57,21 @@
             background: var(--white);
             z-index: 1000;
             padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow);
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .header.visible {
+            transform: translateY(0);
         }
         
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(135deg, rgba(255, 106, 0, 0.1) 0%, rgba(248, 248, 248, 0.8) 100%);
-            padding-top: 80px;
+            background: linear-gradient(135deg, rgba(255, 106, 0, 0.1) 0%, rgba(248, 248, 248, 0.9) 100%);
+            padding-top: 2rem;
         }
         
         .btn {
@@ -75,11 +94,25 @@
         .btn:hover {
             background: var(--primary-hover);
             transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 106, 0, 0.3);
+        }
+        
+        .sticky-call-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--primary);
+            padding: 1rem;
+            z-index: 999;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .sticky-call-bar.visible {
+            transform: translateY(0);
         }
     </style>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     
     <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
@@ -152,13 +185,13 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- Header -->
-    <header class="header">
+    <header class="header bg-white" id="header">
         <div class="container">
             <a href="#" class="logo" onclick="scrollToTop()" aria-label="SlideFixPros - Return to top">
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="4" y="8" width="10" height="16" fill="#FF6A00" rx="2"/>
-                    <rect x="18" y="8" width="10" height="16" fill="#FF6A00" rx="2"/>
-                    <path d="M14 16L18 16" stroke="#FF6A00" stroke-width="2" stroke-linecap="round"/>
+                    <rect x="4" y="6" width="10" height="20" fill="#FF6A00" rx="2"/>
+                    <rect x="18" y="6" width="10" height="20" fill="#FF6A00" rx="2"/>
+                    <path d="M14 16h4" stroke="#FF6A00" stroke-width="2" stroke-linecap="round"/>
                 </svg>
                 <span class="logo-text">SlideFixPros</span>
             </a>
@@ -166,124 +199,124 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero" id="hero">
+    <section class="hero bg-light" id="hero" aria-label="SlideFixPros sliding door repair services">
         <div class="container">
             <div class="hero-content">
                 <h1>Florida Sliding Door Repair—Fixed Today, 24/7</h1>
                 <p class="hero-subtitle">Salt-air stainless rollers • Lifetime warranty • Free phone estimate</p>
-                <a href="tel:+18885044553" class="btn hero-cta" aria-label="Call SlideFixPros now at 888-504-4553" onclick="trackCall()">
+                <a href="tel:+18885044553" class="btn hero-cta" aria-label="Call SlideFixPros now at 888-504-4553" onclick="trackCall('hero')">
                     Call Now: +1 (888) 504-4553
                 </a>
                 <div class="hero-image">
                     <picture>
-                        <source media="(min-width: 768px)" srcset="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1280&h=720&fit=crop&crop=center&auto=format&q=75" type="image/webp">
-                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center&auto=format&q=75" 
+                        <source media="(min-width: 768px)" srcset="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&h=600&fit=crop&auto=format&q=80" type="image/webp">
+                        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&h=450&fit=crop&auto=format&q=75" 
                              alt="Professional technician repairing sliding door in Florida home" 
                              loading="eager" 
-                             width="800" 
-                             height="600">
+                             width="600" 
+                             height="450">
                     </picture>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Trust Bar -->
-    <section class="trust-bar">
+    <!-- Trust Bar Section -->
+    <section class="trust-section bg-light" aria-label="Customer reviews and business credentials">
         <div class="container">
-            <div class="trust-items">
-                <div class="trust-item">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="#ffd700">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            <ul class="trust-list">
+                <li class="trust-item bg-white">
+                    <svg class="trust-icon" width="20" height="20" viewBox="0 0 24 24" fill="#4285f4" aria-hidden="true">
+                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
                     </svg>
                     <span>4.9 Google (3,417 reviews)</span>
-                    <a href="https://g.page/r/YOUR_GMB_LINK" target="_blank" rel="noopener" aria-label="View Google reviews">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#4285f4">
-                            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    <a href="https://g.page/r/YOUR_GMB_LINK" target="_blank" rel="noopener" aria-label="View Google reviews" onclick="trackOutbound('google_reviews')">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"/>
                         </svg>
                     </a>
-                </div>
-                <div class="trust-item">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="#ffd700">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </li>
+                <li class="trust-item bg-white">
+                    <svg class="trust-icon" width="20" height="20" viewBox="0 0 24 24" fill="#d32323" aria-hidden="true">
+                        <path d="M12.17,2.04C6.53,1.71,2,6.3,2,12c0,5.52,4.48,10,10,10s10-4.48,10-10C22,6.3,17.47,1.71,12.17,2.04z M16.4,14.6L12,11.5L7.6,14.6L8.8,9.4L5.2,6.4L10.6,6.2L12,1L13.4,6.2L18.8,6.4L15.2,9.4L16.4,14.6Z"/>
                     </svg>
                     <span>5.0 Yelp rating</span>
-                    <a href="https://yelp.com/biz/YOUR_YELP_LINK" target="_blank" rel="noopener" aria-label="View Yelp reviews">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#d32323">
-                            <path d="M12.17,2.04C6.53,1.71,2,6.3,2,12c0,5.52,4.48,10,10,10s10-4.48,10-10C22,6.3,17.47,1.71,12.17,2.04z"/>
+                    <a href="https://yelp.com/biz/YOUR_YELP_LINK" target="_blank" rel="noopener" aria-label="View Yelp reviews" onclick="trackOutbound('yelp_reviews')">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"/>
                         </svg>
                     </a>
-                </div>
-                <div class="trust-item">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF6A00">
+                </li>
+                <li class="trust-item bg-white">
+                    <svg class="trust-icon" width="20" height="20" viewBox="0 0 24 24" fill="#FF6A00" aria-hidden="true">
                         <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V14H16V16H8V14H9.2V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.4,8.7 10.4,10V14H13.6V10C13.6,8.7 12.8,8.2 12,8.2Z"/>
                     </svg>
                     <span>Licensed & Insured FL GLZ-#XXXX</span>
-                </div>
-                <div class="trust-item">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF6A00">
-                        <path d="M12,5.5A3.5,3.5 0 0,1 15.5,9A3.5,3.5 0 0,1 12,12.5A3.5,3.5 0 0,1 8.5,9A3.5,3.5 0 0,1 12,5.5M5,8C5.56,8 6.08,8.15 6.53,8.42C6.38,9.85 6.8,11.27 7.66,12.38C7.16,13.34 6.16,14 5,14A3,3 0 0,1 2,11A3,3 0 0,1 5,8M19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14C17.84,14 16.84,13.34 16.34,12.38C17.2,11.27 17.62,9.85 17.47,8.42C17.92,8.15 18.44,8 19,8M5.5,18.25C5.5,16.18 8.41,14.5 12,14.5C15.59,14.5 18.5,16.18 18.5,18.25V20H5.5V18.25M0,20V18.5C0,17.11 1.89,15.94 4.45,15.6C3.86,16.28 3.5,17.22 3.5,18.25V20H0M24,20H20.5V18.25C20.5,17.22 20.14,16.28 19.55,15.6C22.11,15.94 24,17.11 24,18.5V20Z"/>
+                </li>
+                <li class="trust-item bg-white">
+                    <svg class="trust-icon" width="20" height="20" viewBox="0 0 24 24" fill="#FF6A00" aria-hidden="true">
+                        <path d="M16,4C16.88,4 17.67,4.84 17.67,5.75C17.67,6.66 16.88,8.5 16,8.5C15.12,8.5 14.33,6.66 14.33,5.75C14.33,4.84 15.12,4 16,4M8.67,4C9.55,4 10.33,4.84 10.33,5.75C10.33,6.66 9.55,8.5 8.67,8.5C7.79,8.5 7,6.66 7,5.75C7,4.84 7.79,4 8.67,4M12.33,7C13.21,7 14,7.84 14,8.75C14,9.66 13.21,11.5 12.33,11.5C11.45,11.5 10.67,9.66 10.67,8.75C10.67,7.84 11.45,7 12.33,7M16,10.25C18.33,10.25 20.67,12.25 20.67,14.75V20H21V22H3V20H3.33V14.75C3.33,12.25 5.67,10.25 8,10.25H16Z"/>
                     </svg>
                     <span>Family-Owned Since 2009</span>
-                </div>
-                <div class="trust-item">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF6A00">
+                </li>
+                <li class="trust-item bg-white">
+                    <svg class="trust-icon" width="20" height="20" viewBox="0 0 24 24" fill="#FF6A00" aria-hidden="true">
                         <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9L10,17Z"/>
                     </svg>
                     <span>$5M Liability Coverage</span>
-                </div>
-            </div>
+                </li>
+            </ul>
         </div>
     </section>
 
-    <!-- Pain Solution Strip -->
-    <section class="section pain-section" id="problems">
+    <!-- Pain Solution Section -->
+    <section class="section pain-section bg-white" id="problems" aria-label="Common sliding door problems we solve">
         <div class="container">
             <h2>Common Problems We Fix</h2>
             <div class="pain-solutions">
-                <div class="pain-card">
+                <div class="pain-card bg-white">
                     <div class="pain-icon">🚪</div>
                     <div class="pain-title">Door off track?</div>
                     <p>30-minute fix—anywhere in FL</p>
-                    <a href="tel:+18885044553" class="btn-secondary" onclick="trackCall()">Get Fixed Now</a>
+                    <a href="tel:+18885044553" class="btn-secondary" onclick="trackCall('problems')">Get Fixed Now</a>
                 </div>
-                <div class="pain-card">
+                <div class="pain-card bg-white">
                     <div class="pain-icon">⚡</div>
                     <div class="pain-title">Hard to slide?</div>
                     <p>30-minute fix—anywhere in FL</p>
-                    <a href="tel:+18885044553" class="btn-secondary" onclick="trackCall()">Get Fixed Now</a>
+                    <a href="tel:+18885044553" class="btn-secondary" onclick="trackCall('problems')">Get Fixed Now</a>
                 </div>
-                <div class="pain-card">
+                <div class="pain-card bg-white">
                     <div class="pain-icon">🔒</div>
                     <div class="pain-title">Won't lock?</div>
                     <p>30-minute fix—anywhere in FL</p>
-                    <a href="tel:+18885044553" class="btn-secondary" onclick="trackCall()">Get Fixed Now</a>
+                    <a href="tel:+18885044553" class="btn-secondary" onclick="trackCall('problems')">Get Fixed Now</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Before/After Gallery -->
-    <section class="section gallery-section" id="gallery">
+    <section class="section gallery-section bg-light" id="gallery" aria-label="Before and after repair results">
         <div class="container">
             <h2>Before & After Results</h2>
             <div class="gallery">
-                <div class="gallery-item">
+                <div class="gallery-item bg-white">
                     <div class="gallery-images">
                         <div class="gallery-img before">
-                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop&auto=format&q=75" 
-                                 alt="Orlando sliding door before repair" 
+                            <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=300&fit=crop&auto=format&q=75" 
+                                 alt="Orlando sliding door before repair - damaged track and rollers" 
                                  loading="lazy" 
                                  width="400" 
                                  height="300">
                             <span class="image-label">Before</span>
                         </div>
                         <div class="gallery-img after">
-                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop&auto=format&q=75" 
-                                 alt="Orlando sliding door after repair" 
+                            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=300&fit=crop&auto=format&q=75" 
+                                 alt="Orlando sliding door after repair - smooth operation restored" 
                                  loading="lazy" 
                                  width="400" 
                                  height="300">
@@ -295,19 +328,19 @@
                         <p>Complete track realignment and roller replacement</p>
                     </div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item bg-white">
                     <div class="gallery-images">
                         <div class="gallery-img before">
                             <img src="https://images.unsplash.com/photo-1560448204-e1a3142c7c77?w=400&h=300&fit=crop&auto=format&q=75" 
-                                 alt="Miami patio door before repair" 
+                                 alt="Miami patio door before repair - salt air corrosion damage" 
                                  loading="lazy" 
                                  width="400" 
                                  height="300">
                             <span class="image-label">Before</span>
                         </div>
                         <div class="gallery-img after">
-                            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=300&fit=crop&auto=format&q=75" 
-                                 alt="Miami patio door after repair" 
+                            <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=400&h=300&fit=crop&auto=format&q=75" 
+                                 alt="Miami patio door after repair - hurricane-rated components installed" 
                                  loading="lazy" 
                                  width="400" 
                                  height="300">
@@ -319,19 +352,19 @@
                         <p>Hurricane-rated parts installation with salt-air protection</p>
                     </div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item bg-white">
                     <div class="gallery-images">
                         <div class="gallery-img before">
                             <img src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=400&h=300&fit=crop&auto=format&q=75" 
-                                 alt="Tampa sliding glass door before repair" 
+                                 alt="Tampa sliding glass door before repair - broken lock mechanism" 
                                  loading="lazy" 
                                  width="400" 
                                  height="300">
                             <span class="image-label">Before</span>
                         </div>
                         <div class="gallery-img after">
-                            <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=400&h=300&fit=crop&auto=format&q=75" 
-                                 alt="Tampa sliding glass door after repair" 
+                            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400&h=300&fit=crop&auto=format&q=75" 
+                                 alt="Tampa sliding glass door after repair - secure lock and weather seal" 
                                  loading="lazy" 
                                  width="400" 
                                  height="300">
@@ -348,11 +381,11 @@
     </section>
 
     <!-- Customer Reviews -->
-    <section class="section reviews-section" id="reviews">
+    <section class="section reviews-section bg-white" id="reviews" aria-label="Customer testimonials and reviews">
         <div class="container">
             <h2>What Our Customers Say</h2>
             <div class="reviews">
-                <div class="review-card">
+                <div class="review-card bg-white">
                     <div class="review-stars">
                         <span>★★★★★</span>
                     </div>
@@ -362,7 +395,7 @@
                         <span>Tampa, FL</span>
                     </div>
                 </div>
-                <div class="review-card">
+                <div class="review-card bg-white">
                     <div class="review-stars">
                         <span>★★★★★</span>
                     </div>
@@ -372,7 +405,7 @@
                         <span>Miami, FL</span>
                     </div>
                 </div>
-                <div class="review-card">
+                <div class="review-card bg-white">
                     <div class="review-stars">
                         <span>★★★★★</span>
                     </div>
@@ -387,54 +420,50 @@
     </section>
 
     <!-- Statewide Service Map -->
-    <section class="section map-section" id="service-area">
+    <section class="section map-section bg-light" id="service-area" aria-label="Florida service area coverage">
         <div class="container">
             <h2>Serving All of Florida</h2>
-            <div class="map-container">
-                <div class="map" id="florida-map">
-                    <!-- Dynamic Number Insertion placeholder -->
-                    <!-- Replace with actual Google Maps embed -->
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651325.0891308715!2d-87.33710368928043!3d27.766279084550704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c1766591562abf%3A0xf72e13d35bc74ed0!2sFlorida!5e0!3m2!1sen!2sus!4v1704067200000!5m2!1sen!2sus" 
-                            width="100%" 
-                            height="250" 
-                            style="border:0;" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade"
-                            title="SlideFixPros service area map of Florida">
-                    </iframe>
-                </div>
+            <div class="map-container bg-white">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651325.0891308715!2d-87.33710368928043!3d27.766279084550704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c1766591562abf%3A0xf72e13d35bc74ed0!2sFlorida!5e0!3m2!1sen!2sus!4v1704067200000!5m2!1sen!2sus" 
+                        width="100%" 
+                        height="250" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="SlideFixPros service area map of Florida">
+                </iframe>
             </div>
             <div class="service-cities">
-                <div class="service-city">
+                <div class="service-city bg-white">
                     <h4>Miami</h4>
                     <p>Dade County</p>
                 </div>
-                <div class="service-city">
+                <div class="service-city bg-white">
                     <h4>Orlando</h4>
                     <p>Orange County</p>
                 </div>
-                <div class="service-city">
+                <div class="service-city bg-white">
                     <h4>Tampa</h4>
                     <p>Hillsborough County</p>
                 </div>
-                <div class="service-city">
+                <div class="service-city bg-white">
                     <h4>Jacksonville</h4>
                     <p>Duval County</p>
                 </div>
-                <div class="service-city">
+                <div class="service-city bg-white">
                     <h4>Fort Lauderdale</h4>
                     <p>Broward County</p>
                 </div>
-                <div class="service-city">
+                <div class="service-city bg-white">
                     <h4>St. Petersburg</h4>
                     <p>Pinellas County</p>
                 </div>
-                <div class="service-city">
+                <div class="service-city bg-white">
                     <h4>Hialeah</h4>
                     <p>Miami-Dade County</p>
                 </div>
-                <div class="service-city">
+                <div class="service-city bg-white">
                     <h4>Tallahassee</h4>
                     <p>Leon County</p>
                 </div>
@@ -442,12 +471,12 @@
         </div>
     </section>
 
-    <!-- Guarantee Bar -->
-    <section class="section guarantee-section" id="guarantees">
+    <!-- Guarantee Section -->
+    <section class="section guarantee-section bg-white" id="guarantees" aria-label="Service guarantees and warranties">
         <div class="container">
             <h2>Our Guarantees</h2>
             <div class="guarantees">
-                <div class="guarantee-item">
+                <div class="guarantee-item bg-white">
                     <div class="guarantee-icon">
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="#FF6A00">
                             <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M11,16.5L18,9.5L16.59,8.09L11,13.67L7.41,10.09L6,11.5L11,16.5Z"/>
@@ -456,7 +485,7 @@
                     <h3>No-Fix-No-Pay</h3>
                     <p>We only charge if we successfully fix your sliding door. 100% satisfaction guaranteed or your money back.</p>
                 </div>
-                <div class="guarantee-item">
+                <div class="guarantee-item bg-white">
                     <div class="guarantee-icon">
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="#FF6A00">
                             <path d="M7,15H9C9,16.08 10.37,17 12,17C13.63,17 15,16.08 15,15C15,13.9 13.96,13.5 11.76,12.97C9.64,12.44 7,11.78 7,9C7,7.21 8.47,5.69 10.5,5.18V3H13.5V5.18C15.53,5.69 17,7.21 17,9H15C15,7.92 13.63,7 12,7C10.37,7 9,7.92 9,9C9,10.1 10.04,10.5 12.24,11.03C14.36,11.56 17,12.22 17,15C17,16.79 15.53,18.31 13.5,18.82V21H10.5V18.82C8.47,18.31 7,16.79 7,15Z"/>
@@ -465,7 +494,7 @@
                     <h3>Price-Match Guarantee</h3>
                     <p>We'll match any competitor's written estimate. Get the best price and the best service in Florida.</p>
                 </div>
-                <div class="guarantee-item">
+                <div class="guarantee-item bg-white">
                     <div class="guarantee-icon">
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="#FF6A00">
                             <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V14H16V16H8V14H9.2V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.4,8.7 10.4,10V14H13.6V10C13.6,8.7 12.8,8.2 12,8.2Z"/>
@@ -479,11 +508,11 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="section faq-section" id="faq">
+    <section class="section faq-section bg-light" id="faq" aria-label="Frequently asked questions">
         <div class="container">
             <h2>Frequently Asked Questions</h2>
             <div class="faq">
-                <div class="faq-item">
+                <div class="faq-item bg-white">
                     <button class="faq-question" aria-expanded="false" aria-controls="faq-1">
                         <span>How quickly can you arrive?</span>
                         <span class="faq-icon">+</span>
@@ -492,7 +521,7 @@
                         <p>We dispatch technicians within 2 hours of your call for same-day sliding door repair service across Florida. Our mobile repair units are strategically located throughout the state to ensure rapid response times.</p>
                     </div>
                 </div>
-                <div class="faq-item">
+                <div class="faq-item bg-white">
                     <button class="faq-question" aria-expanded="false" aria-controls="faq-2">
                         <span>How much does a service visit cost?</span>
                         <span class="faq-icon">+</span>
@@ -501,7 +530,7 @@
                         <p>We provide a free 30-second phone quote based on your door's symptoms. No hidden fees or surprise charges - you'll know the exact cost upfront before we start any work.</p>
                     </div>
                 </div>
-                <div class="faq-item">
+                <div class="faq-item bg-white">
                     <button class="faq-question" aria-expanded="false" aria-controls="faq-3">
                         <span>Do you use hurricane-rated parts?</span>
                         <span class="faq-icon">+</span>
@@ -510,7 +539,7 @@
                         <p>Yes, all our replacement parts are hurricane-rated and designed to withstand Florida's harsh weather conditions, including salt air corrosion and high winds. We use only premium stainless steel components.</p>
                     </div>
                 </div>
-                <div class="faq-item">
+                <div class="faq-item bg-white">
                     <button class="faq-question" aria-expanded="false" aria-controls="faq-4">
                         <span>Is the warranty transferable?</span>
                         <span class="faq-icon">+</span>
@@ -524,12 +553,12 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section">
+    <section class="cta-section bg-primary" aria-label="Final call to action">
         <div class="container">
             <div class="cta-content">
                 <h2>Ready to Fix Your Sliding Door?</h2>
                 <p>Call now for your free estimate and same-day service</p>
-                <a href="tel:+18885044553" class="btn btn-large" onclick="trackCall()">
+                <a href="tel:+18885044553" class="btn btn-large" onclick="trackCall('cta')">
                     📞 Call Now: +1 (888) 504-4553
                 </a>
                 <p class="cta-note">Available 24/7 • Free Phone Quote • Licensed & Insured</p>
@@ -538,12 +567,12 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer bg-dark" aria-label="Contact information and company details">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>24/7 Emergency Service</h3>
-                    <a href="tel:+18885044553" class="footer-phone" onclick="trackCall()">+1 (888) 504-4553</a>
+                    <a href="tel:+18885044553" class="footer-phone" onclick="trackCall('footer')">+1 (888) 504-4553</a>
                     <p>Serving all of Florida with same-day sliding door repair</p>
                 </div>
                 <div class="footer-section">
@@ -587,8 +616,8 @@
     </footer>
 
     <!-- Sticky Call Bar (Mobile Only) -->
-    <div class="sticky-call-bar">
-        <a href="tel:+18885044553" class="btn sticky-btn" aria-label="Call SlideFixPros now" onclick="trackCall()">
+    <div class="sticky-call-bar bg-primary" id="sticky-call-bar">
+        <a href="tel:+18885044553" class="btn sticky-btn" aria-label="Call SlideFixPros now" onclick="trackCall('sticky')">
             📞 Call Now: (888) 504-4553
         </a>
     </div>

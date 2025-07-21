@@ -131,7 +131,7 @@
     // Initialize dataLayer for GTM
     window.dataLayer = window.dataLayer || [];
 
-    // Enhanced call tracking with additional context
+    // Enhanced call tracking with source attribution
     window.trackCall = function(source = 'unknown') {
         const callData = {
             event: 'click_to_call',
@@ -163,6 +163,20 @@
         } catch (e) {
             console.log('Could not store call data in localStorage');
         }
+    };
+
+    // Track outbound link clicks (Google/Yelp reviews)
+    window.trackOutbound = function(linkType) {
+        const outboundData = {
+            event: 'outbound_click',
+            event_category: 'engagement',
+            event_label: linkType,
+            page_section: getCurrentSection(),
+            timestamp: new Date().toISOString()
+        };
+        
+        window.dataLayer.push(outboundData);
+        console.log('Outbound tracked:', outboundData);
     };
 
     // Generic event tracking function
@@ -211,62 +225,82 @@
         });
     };
 
-    // Header visibility on scroll
-    function initHeaderScroll() {
-        const header = document.querySelector('.header');
-        let lastScrollY = window.scrollY;
+    // Header and sticky bar visibility on scroll (200px trigger)
+    function initScrollBehavior() {
+        const header = document.getElementById('header');
+        const stickyBar = document.getElementById('sticky-call-bar');
+        const scrollThreshold = 200;
+        let isHeaderVisible = false;
+        let isStickyVisible = false;
         let ticking = false;
 
-        function updateHeader() {
+        function updateScrollElements() {
             const scrollY = window.scrollY;
             
-            if (scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
+            // Show/hide header after 200px scroll
+            if (scrollY > scrollThreshold && !isHeaderVisible) {
+                header.classList.add('visible');
+                isHeaderVisible = true;
+                trackEvent('header_shown', { scroll_position: scrollY });
+            } else if (scrollY <= scrollThreshold && isHeaderVisible) {
+                header.classList.remove('visible');
+                isHeaderVisible = false;
             }
             
-            lastScrollY = scrollY;
+            // Show/hide sticky bar after 200px scroll (mobile only)
+            if (window.innerWidth < 769) {
+                if (scrollY > scrollThreshold && !isStickyVisible) {
+                    stickyBar.classList.add('visible');
+                    isStickyVisible = true;
+                } else if (scrollY <= scrollThreshold && isStickyVisible) {
+                    stickyBar.classList.remove('visible');
+                    isStickyVisible = false;
+                }
+            }
+            
             ticking = false;
         }
 
         function requestTick() {
             if (!ticking) {
-                requestAnimationFrame(updateHeader);
+                requestAnimationFrame(updateScrollElements);
                 ticking = true;
             }
         }
 
         window.addEventListener('scroll', requestTick, { passive: true });
+        
+        // Handle resize events
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 769) {
+                stickyBar.classList.remove('visible');
+                isStickyVisible = false;
+            }
+        });
     }
 
     // ============================================
-    // FORM ENHANCEMENTS
+    // CALL TRACKING SETUP
     // ============================================
 
-    // Add dynamic number insertion placeholder
-    function initDynamicNumberInsertion() {
-        // This would integrate with your call tracking service
-        // Placeholder for DNI (Dynamic Number Insertion) integration
-        const phoneElements = document.querySelectorAll('a[href^="tel:"]');
+    // Add tracking to all phone links
+    function initCallTracking() {
+        const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
         
-        phoneElements.forEach(el => {
-            // Add click tracking to all phone links
-            el.addEventListener('click', (e) => {
-                const source = el.closest('section')?.id || 'unknown';
+        phoneLinks.forEach(link => {
+            // Remove existing onclick to avoid conflicts
+            link.removeAttribute('onclick');
+            
+            link.addEventListener('click', (e) => {
+                const source = link.closest('section')?.id || 
+                             link.closest('.header')?.id || 
+                             link.closest('.footer')?.id || 
+                             link.closest('.sticky-call-bar')?.id || 
+                             'unknown';
+                
                 trackCall(source);
             });
         });
-        
-        // Example DNI integration (replace with your service)
-        // fetch('/api/get-tracking-number')
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         phoneElements.forEach(el => {
-        //             el.href = `tel:${data.trackingNumber}`;
-        //             el.textContent = el.textContent.replace(/\+1 \(888\) 504-4553/g, data.displayNumber);
-        //         });
-        //     });
     }
 
     // ============================================
@@ -295,7 +329,7 @@
         });
 
         // Observe sections for animations
-        const sections = document.querySelectorAll('.section, .hero, .trust-bar, .cta-section');
+        const sections = document.querySelectorAll('.section, .hero, .trust-section, .cta-section');
         sections.forEach(section => animationObserver.observe(section));
     }
 
@@ -306,7 +340,7 @@
     function initAccessibility() {
         // Skip link functionality
         const skipLink = document.createElement('a');
-        skipLink.href = '#main-content';
+        skipLink.href = '#hero';
         skipLink.textContent = 'Skip to main content';
         skipLink.className = 'sr-only skip-link';
         skipLink.style.cssText = `
@@ -334,7 +368,6 @@
         // Add main content landmark
         const heroSection = document.querySelector('.hero');
         if (heroSection) {
-            heroSection.setAttribute('id', 'main-content');
             heroSection.setAttribute('role', 'main');
         }
 
@@ -511,16 +544,16 @@
         });
 
         // Add swipe hint for mobile trust bar
-        const trustBar = document.querySelector('.trust-bar');
-        const trustItems_container = document.querySelector('.trust-items');
+        const trustSection = document.querySelector('.trust-section');
+        const trustList = document.querySelector('.trust-list');
         
-        if (trustBar && trustItems_container) {
+        if (trustSection && trustList) {
             let isScrolling = false;
             
-            trustItems_container.addEventListener('scroll', () => {
+            trustList.addEventListener('scroll', () => {
                 if (!isScrolling) {
                     trackEvent('trust_bar_scroll', {
-                        scroll_position: trustItems_container.scrollLeft
+                        scroll_position: trustList.scrollLeft
                     });
                     isScrolling = true;
                     setTimeout(() => {
@@ -553,9 +586,9 @@
         initLazyLoading();
         initAccessibility();
         initErrorHandling();
-        initDynamicNumberInsertion();
+        initCallTracking();
+        initScrollBehavior();
         initScrollAnimations();
-        initHeaderScroll();
         initGallery();
         initTrustBar();
         initPerformanceMonitoring();
@@ -607,6 +640,7 @@
     // Export global functions
     window.SlideFixPros = {
         trackCall: window.trackCall,
+        trackOutbound: window.trackOutbound,
         trackEvent: window.trackEvent,
         scrollToTop: window.scrollToTop,
         announceToScreenReader: window.announceToScreenReader
